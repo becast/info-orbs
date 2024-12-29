@@ -2,7 +2,9 @@
 #include "WebDataWidget.h"
 
 WebDataWidget::WebDataWidget(ScreenManager &manager, ConfigManager &config, String url) : Widget(manager, config) {
-    httpRequestAddress = url;
+    m_config.addConfigBool("WebDataWidget", "webEnabled", &m_enabled, "Enable Widget");
+    config.addConfigString("WebDataWidget", "webURL", &m_url, 40, "URL for Widget");
+    httpRequestAddress = String(m_url.c_str());
 
     m_lastUpdate = 0;
     for (int i = 0; i < 5; i++) {

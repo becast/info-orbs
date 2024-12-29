@@ -4,6 +4,7 @@
 #include "Widget.h"
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
+#include "config_helper.h"
 
 #include "Utils.h"
 #include "WebDataModel.h"
@@ -21,6 +22,7 @@ public:
 private:
     unsigned long m_lastUpdate = 0;
     unsigned long m_updateDelay = 1000;
+    std::string m_url = WEB_DATA_WIDGET_URL;
     String httpRequestAddress;
     WebDataModel m_obj[5];
     int32_t m_defaultColor = TFT_WHITE;
